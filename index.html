@@ -68,7 +68,7 @@
             }
         }
 
-        /* Action buttons row (Theme + PDF) — теперь справа */
+        /* Action buttons row (Theme + PDF) — справа */
         .action-buttons {
             display: flex;
             justify-content: flex-end;
@@ -90,6 +90,7 @@
             align-items: center;
             gap: 8px;
             transition: all 0.2s;
+            text-decoration: none;
         }
 
         .action-btn:hover {
@@ -330,10 +331,10 @@
 </head>
 <body>
     <div class="cv-container" id="cvContainer">
-        <!-- Action buttons: Theme toggle + PDF — теперь справа -->
+        <!-- Action buttons: Theme toggle + PDF link -->
         <div class="action-buttons">
             <button class="action-btn" id="themeToggle">🌓 Light / Dark</button>
-            <button class="action-btn" id="downloadPDF">📄 Download as PDF</button>
+            <a href="George_Kostarev_CV_Extended.pdf" download class="action-btn" id="downloadPDFLink">📄 Extended CV as PDF</a>
         </div>
 
         <!-- Header -->
@@ -357,7 +358,7 @@
             <div>⚙️ Full-time / part-time / project · On-site / remote</div>
         </div>
 
-        <!-- Experience (я оставил твои правки текста) -->
+        <!-- Experience -->
         <div class="section">
             <div class="section-title">Work Experience — 9 years</div>
 
@@ -476,6 +477,7 @@
     </div>
 
     <script>
+        // Theme toggle
         const toggleBtn = document.getElementById('themeToggle');
         toggleBtn.addEventListener('click', () => {
             document.body.classList.toggle('dark');
@@ -483,30 +485,6 @@
         });
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark');
-        }
-
-        const pdfBtn = document.getElementById('downloadPDF');
-        pdfBtn.addEventListener('click', () => {
-            if (!window.html2pdf) {
-                const script = document.createElement('script');
-                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-                script.onload = () => generatePDF();
-                document.head.appendChild(script);
-            } else {
-                generatePDF();
-            }
-        });
-
-        function generatePDF() {
-            const element = document.getElementById('cvContainer');
-            const opt = {
-                margin:        [0.5, 0.5, 0.5, 0.5],
-                filename:     'George_Kostarev_CV.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, letterRendering: true, useCORS: false, logging: false },
-                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-            };
-            html2pdf().set(opt).from(element).save();
         }
     </script>
 </body>
