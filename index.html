@@ -23,23 +23,32 @@
             --accent-dark: #2563eb;
             --tag-bg: #f1f5f9;
             --shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            --glow: none;
+            --bg-gradient: none;
+            --card-backdrop: none;
+            --card-border: none;
         }
 
         body.dark {
-            --bg-body: #0f172a;
-            --bg-card: #1e293b;
+            --bg-body: #030712;
+            --bg-card: rgba(15, 25, 35, 0.75);
             --text-primary: #f1f5f9;
             --text-secondary: #cbd5e1;
             --text-muted: #94a3b8;
-            --border: #334155;
-            --accent: #60a5fa;
-            --accent-dark: #3b82f6;
-            --tag-bg: #334155;
-            --shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            --border: #2d4a3e;
+            --accent: #34d399;
+            --accent-dark: #10b981;
+            --tag-bg: rgba(30, 41, 59, 0.8);
+            --shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
+            --glow: 0 0 6px #34d399;
+            --bg-gradient: radial-gradient(circle at 10% 20%, #0a1f1a, #030712);
+            --card-backdrop: blur(2px);
+            --card-border: 1px solid var(--border);
         }
 
         body {
             background-color: var(--bg-body);
+            background-image: var(--bg-gradient);
             font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
             line-height: 1.5;
             padding: 40px 20px;
@@ -50,11 +59,13 @@
             max-width: 1100px;
             margin: 0 auto;
             background: var(--bg-card);
+            backdrop-filter: var(--card-backdrop);
             border-radius: 32px;
             box-shadow: var(--shadow);
             overflow: hidden;
             padding: 40px 48px;
             animation: fadeInUp 0.6s ease-out;
+            border: var(--card-border);
         }
 
         @keyframes fadeInUp {
@@ -68,7 +79,6 @@
             }
         }
 
-        /* Action buttons row (Theme + PDF) — справа */
         .action-buttons {
             display: flex;
             justify-content: flex-end;
@@ -98,9 +108,13 @@
             color: white;
             border-color: var(--accent);
             transform: translateY(-2px);
+            box-shadow: var(--glow);
         }
 
-        /* header */
+        body.dark .action-btn:hover {
+            color: #0f172a;
+        }
+
         .header {
             display: flex;
             flex-wrap: wrap;
@@ -120,6 +134,13 @@
             -webkit-background-clip: text;
             color: transparent;
             margin-bottom: 8px;
+        }
+
+        body.dark .name-title h1 {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
         .name-title p {
@@ -163,7 +184,6 @@
             border: 1px solid var(--border);
         }
 
-        /* sections */
         .section {
             margin-bottom: 36px;
         }
@@ -226,6 +246,7 @@
             color: var(--accent);
             position: absolute;
             left: 4px;
+            text-shadow: var(--glow);
         }
 
         .skills-grid {
@@ -249,7 +270,6 @@
             transform: translateY(-2px);
         }
 
-        /* contact form */
         .contact-form {
             margin-top: 24px;
             background: color-mix(in srgb, var(--accent) 4%, transparent);
@@ -302,6 +322,11 @@
         button:hover {
             background: var(--accent-dark);
             transform: scale(1.02);
+            box-shadow: var(--glow);
+        }
+
+        body.dark button:hover {
+            color: #0f172a;
         }
 
         hr {
@@ -330,163 +355,156 @@
     </style>
 </head>
 <body>
-    <div class="cv-container" id="cvContainer">
-        <!-- Action buttons: Theme toggle + PDF link -->
-        <div class="action-buttons">
-            <button class="action-btn" id="themeToggle">🌓 Light / Dark</button>
-            <a href="George_Kostarev_CV_Extended.pdf" download class="action-btn" id="downloadPDFLink">📄 Extended CV as PDF</a>
-        </div>
-
-        <!-- Header -->
-        <div class="header">
-            <div class="name-title">
-                <h1>George Kostarev</h1>
-                <p>Recruitment Team Lead / HRBP</p>
-                <div class="badge">Open to HRD · HR Manager roles</div>
-            </div>
-            <div class="contact-info">
-                📞 +7 (903) 107-0112<br>
-                📧 <a href="mailto:gkostarev.m@gmail.com">GKostarev.m@gmail.com</a><br>
-                💬 Telegram: <a href="https://t.me/Dov_Lazarus">@Dov_Lazarus</a><br>
-                🔗 <a href="https://www.linkedin.com/in/gkostarev/" target="_blank">LinkedIn:Gkostarev</a><br>
-                🔗 <a href="https://my.assessfirst.com/public/profile/pnscksrc-georgii-kostarev?lang=en-EN">Assessfirst.com</a>
-            </div>
-        </div>
-
-        <div class="salary-location">
-            <div>📍 Moscow · Ready to relocate & business trips</div>
-            <div>💼 Desired salary: <strong>$3,000 net</strong></div>
-            <div>⚙️ Full-time / part-time / project · On-site / remote</div>
-        </div>
-
-        <!-- Experience -->
-        <div class="section">
-            <div class="section-title">Work Experience — 9 years</div>
-
-            <div class="job">
-                <div class="job-header">
-                    <div><span class="job-title">HR Business Partner</span> · <span class="company">Product IT + Media Buying (IT, influencer marketing, edtech)</span></div>
-                    <div class="date">May 2023 — Feb 2026 · 2y 10m</div>
-                </div>
-                <div class="location">you-guru.media, Moscow</div>
-                <div class="description">
-                    <ul>
-                        <li>Started as a solo recruiter, built and led a team of 6, scaling the company from 12 to 110 people within 6 months.</li>
-                        <li>Reduced time-to-hire from 4 weeks to 2.5 weeks (a 40% improvement) through a candidate pool of 4,500 and multilingual sourcing (12 YouTube channels, 6 languages, targeted ads).</li>
-                        <li>Designed onboarding that accelerated new hires to reach full productivity faster — directly enabling business growth.</li>
-                        <li>Developed HR processes from scratch (recruitment, onboarding, assessment, corporate culture, employer branding).</li>
-                        <li>Trained managers and staff on AI tools and process automation.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="job">
-                <div class="job-header">
-                    <div><span class="job-title">Lead Recruiting Manager → HR Director</span> · <span class="company">International Group of Companies (Top-3 CPA, CIS)</span></div>
-                    <div class="date">July 2018 — Nov 2023 · 5y 5m</div>
-                </div>
-                <div class="location">Moscow · 10 offices in Russia, 15 worldwide</div>
-                <div class="description">
-                    <ul>
-                        <li>Managed recruitment for 7 offices across 5 cities (IT, marketing, management). Focus: Performance marketing, gamedev, iGaming.</li>
-                        <li>Built HR from scratch, personally closed key vacancies, conducted competency/ case interviews.</li>
-                        <li>Led team of 6 recruiters in 3 cities; created reporting & automation systems.</li>
-                        <li>Launched referral programs, targeted ads, sourcing via GitHub, StackOverflow, X-Ray, Boolean.</li>
-                        <li>Grew LinkedIn network to 8,500+ contacts. Closed dozens of roles (Media Buyer, GoLang TL, QA, Architect, etc.).</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="job">
-                <div class="job-header">
-                    <div><span class="job-title">Lead Recruitment Manager</span> · <span class="company">"Praut"</span></div>
-                    <div class="date">Oct 2017 — Feb 2018 · 5m</div>
-                </div>
-                <div class="description">
-                    <ul>
-                        <li>Startup environment: built teams from scratch, office setup, ATS & cloud infrastructure.</li>
-                        <li>Full-cycle recruitment for all departments (IT, commerce, back office) using modern sourcing tools.</li>
-                        <li>Created job profiles, organised onboarding and corporate events.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="job">
-                <div class="job-header">
-                    <div><span class="job-title">Recruitment Manager</span> · <span class="company">"Unity" Recruitment Agency</span></div>
-                    <div class="date">Oct 2016 — Aug 2017 · 11m</div>
-                </div>
-                <div class="description">
-                    <ul>
-                        <li>Closed roles for Sberbank, SberTech, Moscow Exchange, Interfax, Sibur, Discovery and internal hiring.</li>
-                        <li>Full-cycle recruitment: sourcing, interviews, feedback, reference checks, reporting.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Education -->
-        <div class="section">
-            <div class="section-title">Education</div>
-            <div><strong>Completed higher education</strong> · Russian State University of Trade and Economics, Moscow</div>
-            <div>Faculty of Management — Economics and Enterprise Management in Trade (2015)</div>
-        </div>
-
-        <!-- Skills & Languages -->
-        <div class="section">
-            <div class="section-title">Languages & Skills</div>
-            <div style="margin-bottom: 12px;"><strong>🇷🇺 Russian</strong> (Native) &nbsp;&nbsp;|&nbsp;&nbsp; <strong>🇬🇧 English</strong> (C1 Advanced)</div>
-            <div class="skills-grid">
-                <span class="skill-tag">Business communication</span>
-                <span class="skill-tag">Quick learning</span>
-                <span class="skill-tag">Multitasking</span>
-                <span class="skill-tag">Tactfulness</span>
-                <span class="skill-tag">Planning</span>
-                <span class="skill-tag">Attention to detail</span>
-                <span class="skill-tag">Training & development</span>
-                <span class="skill-tag">Proactiveness</span>
-            </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="section">
-            <div class="section-title">📬 Contact me directly</div>
-            <div class="contact-form">
-                <form id="directContactForm" action="https://formspree.io/f/mlgvykkg" method="POST">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Your name</label>
-                            <input type="text" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" name="email" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Message / Job offer</label>
-                        <textarea rows="3" name="message" required></textarea>
-                    </div>
-                    <button type="submit">Send message ✉️</button>
-                    <p style="font-size: 12px; margin-top: 12px; opacity: 0.7;">I’ll reply within 24 hours</p>
-                </form>
-            </div>
-        </div>
-
-        <hr>
-        <div style="font-size: 12px; text-align: center; opacity: 0.6;">References available upon request</div>
+<div class="cv-container" id="cvContainer">
+    <div class="action-buttons">
+        <button class="action-btn" id="themeToggle">🌓 Light / Dark</button>
+        <a href="George_Kostarev_CV_Extended.pdf" download class="action-btn" id="downloadPDFLink">📄 Extended CV as PDF</a>
     </div>
 
-    <script>
-        // Theme toggle
-        const toggleBtn = document.getElementById('themeToggle');
-        toggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-        });
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark');
-        }
-    </script>
+    <div class="header">
+        <div class="name-title">
+            <h1>George Kostarev</h1>
+            <p>Recruitment Team Lead / HRBP</p>
+            <div class="badge">Open to HRD · HR Manager roles</div>
+        </div>
+        <div class="contact-info">
+            📞 +7 (903) 107-0112<br>
+            📧 <a href="mailto:gkostarev.m@gmail.com">GKostarev.m@gmail.com</a><br>
+            💬 Telegram: <a href="https://t.me/Dov_Lazarus">@Dov_Lazarus</a><br>
+            🔗 <a href="https://www.linkedin.com/in/gkostarev/" target="_blank">LinkedIn: Gkostarev</a><br>
+            🔗 <a href="https://my.assessfirst.com/public/profile/pnscksrc-georgii-kostarev?lang=en-EN">Assessfirst.com</a>
+        </div>
+    </div>
+
+    <div class="salary-location">
+        <div>📍 Moscow · Ready to relocate & business trips</div>
+        <div>💼 Desired salary: <strong>$3,000 net</strong></div>
+        <div>⚙️ Full-time / part-time / project · On-site / remote</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Work Experience — 9 years</div>
+
+        <div class="job">
+            <div class="job-header">
+                <div><span class="job-title">HR Business Partner</span> · <span class="company">Product IT + Media Buying (IT, influencer marketing, edtech)</span></div>
+                <div class="date">May 2023 — Feb 2026 · 2y 10m</div>
+            </div>
+            <div class="location">you-guru.media, Moscow</div>
+            <div class="description">
+                <ul>
+                    <li>Started as a solo recruiter, built and led a team of 6, scaling the company from 12 to 110 people within 6 months.</li>
+                    <li>Reduced time-to-hire from 4 weeks to 2.5 weeks (a 40% improvement) through a candidate pool of 4,500 and multilingual sourcing (12 YouTube channels, 6 languages, targeted ads).</li>
+                    <li>Designed onboarding that accelerated new hires to reach full productivity faster — directly enabling business growth.</li>
+                    <li>Developed HR processes from scratch (recruitment, onboarding, assessment, corporate culture, employer branding).</li>
+                    <li>Trained managers and staff on AI tools and process automation.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div><span class="job-title">Lead Recruiting Manager → HR Director</span> · <span class="company">International Group of Companies (Top-3 CPA, CIS)</span></div>
+                <div class="date">July 2018 — Nov 2023 · 5y 5m</div>
+            </div>
+            <div class="location">Moscow · 10 offices in Russia, 15 worldwide</div>
+            <div class="description">
+                <ul>
+                    <li>Managed recruitment for 7 offices across 5 cities (IT, marketing, management). Focus: Performance marketing, gamedev, iGaming.</li>
+                    <li>Built HR from scratch, personally closed key vacancies, conducted competency/ case interviews.</li>
+                    <li>Led team of 6 recruiters in 3 cities; created reporting & automation systems.</li>
+                    <li>Launched referral programs, targeted ads, sourcing via GitHub, StackOverflow, X-Ray, Boolean.</li>
+                    <li>Grew LinkedIn network to 8,500+ contacts. Closed dozens of roles (Media Buyer, GoLang TL, QA, Architect, etc.).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div><span class="job-title">Lead Recruitment Manager</span> · <span class="company">"Praut"</span></div>
+                <div class="date">Oct 2017 — Feb 2018 · 5m</div>
+            </div>
+            <div class="description">
+                <ul>
+                    <li>Startup environment: built teams from scratch, office setup, ATS & cloud infrastructure.</li>
+                    <li>Full-cycle recruitment for all departments (IT, commerce, back office) using modern sourcing tools.</li>
+                    <li>Created job profiles, organised onboarding and corporate events.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div><span class="job-title">Recruitment Manager</span> · <span class="company">"Unity" Recruitment Agency</span></div>
+                <div class="date">Oct 2016 — Aug 2017 · 11m</div>
+            </div>
+            <div class="description">
+                <ul>
+                    <li>Closed roles for Sberbank, SberTech, Moscow Exchange, Interfax, Sibur, Discovery and internal hiring.</li>
+                    <li>Full-cycle recruitment: sourcing, interviews, feedback, reference checks, reporting.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Education</div>
+        <div><strong>Completed higher education</strong> · Russian State University of Trade and Economics, Moscow</div>
+        <div>Faculty of Management — Economics and Enterprise Management in Trade (2015)</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Languages & Skills</div>
+        <div style="margin-bottom: 12px;"><strong>🇷🇺 Russian</strong> (Native) &nbsp;&nbsp;|&nbsp;&nbsp; <strong>🇬🇧 English</strong> (C1 Advanced)</div>
+        <div class="skills-grid">
+            <span class="skill-tag">Business communication</span>
+            <span class="skill-tag">Quick learning</span>
+            <span class="skill-tag">Multitasking</span>
+            <span class="skill-tag">Tactfulness</span>
+            <span class="skill-tag">Planning</span>
+            <span class="skill-tag">Attention to detail</span>
+            <span class="skill-tag">Training & development</span>
+            <span class="skill-tag">Proactiveness</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📬 Contact me directly</div>
+        <div class="contact-form">
+            <form id="directContactForm" action="https://formspree.io/f/mlgvykkg" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your name</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Message / Job offer</label>
+                    <textarea rows="3" name="message" required></textarea>
+                </div>
+                <button type="submit">Send message ✉️</button>
+                <p style="font-size: 12px; margin-top: 12px; opacity: 0.7;">I’ll reply within 24 hours</p>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+    <div style="font-size: 12px; text-align: center; opacity: 0.6;">References available upon request</div>
+</div>
+
+<script>
+    const toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    });
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+    }
+</script>
 </body>
 </html>
